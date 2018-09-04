@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ScrumBoard-About</title>
+</head>
+<body>
+<div id="aboutbackground">
+    <br>
+@using Microsoft.AspNetCore.Http
+
+<div class="row">
+    <div class="col-sm-8">
+        <h2 style="color:rgb(7, 155, 148); ">Watch Me Grow! </h2>
+        <ul>
+        <h4> <i> Hey @Context.Session.GetString("username")! </i></h4>
+        <br>
+        </ul>
+    </div>
+
+    <div class="col-sm-4">
+        <a href="/logout"><button class="btn btn-info">Log out</button></a> 
+        <a href="/board"><button class="btn btn-info"> Back to Scrum Board </button></a>
+        <br>  
+        <br>
+    </div>
+</div>
+
+
+<!-- model List<Scrum> -->
+
+@if (@Context.Session.GetInt32("userid") == @Model.UserId ){
+        <a href="/delete/@Model.id"><button class="btn btn-primary btn-sm"> Delete </button> </a> 
+        <a href="/edit/@Model.id"><button class="btn btn-warning btn-sm"> Edit this task </button> </a>
+
+} else {
+    bool found = false;
+    
+    @foreach (var oneparticipant in @Model.parts){
+        @if(oneparticipant.UserId == @Context.Session.GetInt32("userid")) {
+            found = true;
+        }
+    }
+    
+    @if(found == true) {
+        <a href="/unjoin/@Model.id"><button class="btn btn-danger btn-sm"> Leave this task </button></a>
+    } else {
+        <a href="/join/@Model.id"><button class="btn btn-success btn-sm"> Join this task </button></a>
+    }
+} 
+
+
+@{
+    <h3>Title: @Model.title</h3>
+    <h4 style="color:rgb(7, 155, 148);"> <strong> Status: @Model.status </strong></h4>
+    <p>Owner: @ViewBag.makername </p>
+    <p>Dates: @Model.startdate.ToString("M/d/yyyy") - @Model.enddate.ToString("M/d/yyyy") </p>
+
+    <p>Description: @Model.dx </p>
+    <br>
+    <p>Responsible Members:</p>
+    <ul>
+        <p> @ViewBag.makername </p>
+    @foreach(var part in @Model.parts){
+        <p> @part.user.name @part.user.lastname</p>
+    }
+    </ul>
+}
+
+
+
+</div> <!-- end of background image -->
+</body>
+</html>

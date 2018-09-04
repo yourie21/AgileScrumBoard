@@ -1,0 +1,48 @@
+body{padding-top:50px;padding-bottom:20px}.body-content{padding-left:15px;padding-right:15px}.carousel-caption p{font-size:20px;line-height:1.4}.carousel-inner .item img[src$=".svg"]{width:100%}#qrCode{margin:15px}@media screen and (max-width:767px){.carousel-caption{display:none}}.field-validation-error {
+  color: rgb(255, 0, 140);
+}
+body {
+  padding-top: 50px;
+  padding-bottom: 20px; 
+  background-image: url("/images/growth.jpg");
+  /* opacity: 0.5;
+  filter: alpha(opacity=50); */
+}
+#firstbackground {
+  background-image: url("/images/first.jpg");
+  background-repeat:no-repeat;
+  background-size:contain;
+}
+#secondbackground {
+  background-image: url("/images/dev.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position-y: -250px;
+  min-height: 700px;
+
+}
+#addbackground {
+  background-image: url("/images/seed.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+/* background-position-y: -250px;  */
+min-height: 600px;
+}
+
+#aboutbackground {
+  background-image: url("/images/growth.jpg");
+  background-repeat:no-repeat;
+  background-size:contain;
+  /* background-position-y: -250px;  */
+  min-height: 700px;
+
+}
+
+#editbackground {
+  background-image: url("/images/dev.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position-y: -100px;
+  min-height: 750px;
+
+} 

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ScrumBoard</title>
+</head>
+<body>
+
+<div id="secondbackground">
+<br>
+@using Microsoft.AspNetCore.Http
+
+<div class="row">
+    <div class="col-sm-8">
+        <h2 style="color:rgb(7, 155, 148); ">Watch Us Grow~ </h2>
+        <ul>
+        <h4> <i> Hey @Context.Session.GetString("username")! </i></h4>
+        <br>
+        </ul>
+    </div>
+
+    <div class="col-sm-4">
+        <a href="logout"><button class="btn btn-info">Log out</button></a>  |
+        <a href="/add"><button class="btn btn-info"> Add a Task </button></a>
+        <br>  
+        <br>
+        <form class="form-inline my-2 my-lg-0">
+                Sorty By: 
+            <select name="sort" class="form-control">
+                <option value=""> Sort options... </option>
+                <option value="UserId"> Creator </option>
+                <option value="enddate"> End Date </option>
+                <option value="status"> Status </option>
+            </select>
+        </form>
+    </div>
+</div>
+<br>
+@model List<Scrum>
+<table class="table">
+    <br>
+    <tr>
+        <th>Task</th>
+        <th>Department </th>
+        <th>Creator</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Due Days left</th>
+        <th>Member Count</th>
+        <th>Action</th>
+        <th>Status </th>
+    </tr>
+           <!-- } else if ( n == 0 ) {
+            <td> &onetask.enddate.Subtract(DateTime.Now).Days days </td> -->
+
+    @foreach(var onetask in @Model){ 
+    <tr>
+        <td><a href="about/@onetask.id"> @onetask.title </a></td>
+
+        <td> @onetask.dept</td>
+
+        <td> @onetask.user.name </td>
+
+        <td> @onetask.startdate.ToString("M/d/yyyy") </td>
+
+        <td> @onetask.enddate.ToString("M/d/yyyy") </td>
+
+    @{  double weeks = onetask.enddate.Subtract(DateTime.Now).TotalDays / 7;
+        double n = Math.Truncate(weeks);
+        if (onetask.enddate.Subtract(DateTime.Now).Days == 0) {
+            <td> Due today </td>
+        } else if ( n > 0 && (onetask.enddate.Subtract(DateTime.Now).Days - (n*7)) > 0) {
+            <td> @n weeks, @(onetask.enddate.Subtract(DateTime.Now).Days - (n*7)) days </td>
+ 
+        } else if (DateTime.Now.Subtract(onetask.enddate).Days > 0) {
+            <td> -@DateTime.Now.Subtract(onetask.enddate).Days days ago </td>
+        } else {
+            <td> @onetask.enddate.Subtract(DateTime.Now).Days days </td>
+        }
+    }
+        <td> @(onetask.parts.Count +1) members </td>
+        
+        @if (@Context.Session.GetInt32("userid") == @onetask.UserId ){
+            <td> <a href="delete/@onetask.id"><button class="btn btn-primary btn-sm" style="width:60px;"> Delete </button> </a></td>
+        
+        } else {
+            bool found = false;
+           
+            @foreach (var likerow in onetask.parts){
+                @if(likerow.UserId == @Context.Session.GetInt32("userid")) {
+                    found = true;
+                }
+            }
+           
+            @if(found == true) {
+                <td><a href="unjoin/@onetask.id"><button class="btn btn-danger btn-sm" style="width:60px;"> Leave </button></a> </td>
+            } else {
+                <td><a href="join/@onetask.id"><button class="btn btn-success btn-sm" style="width:60px;"> Join </button></a></td>
+            }
+        }
+
+        @if (@Context.Session.GetInt32("userid") == @onetask.UserId ){
+            <td><a href="edit/@onetask.id"><button class="btn btn-warning btn-sm" style="color: rgb(26, 13, 208);"> Edit: @onetask.status </button> </a></td>
+        } else {
+            <td>@onetask.status</td>
+        }
+    </tr>
+    }
+
+</table>
+
+</div> <!-- secondbackground end -->
+
+</body>
+</html>

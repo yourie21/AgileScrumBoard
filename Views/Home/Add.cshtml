@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ScrumBoard-Add</title>
+</head>
+<body>
+
+<div id="addbackground">
+<br>
+@using Microsoft.AspNetCore.Http
+<div class="row">
+    <div class="col-sm-8">
+        <h2 style="color:rgb(7, 155, 148); padding-left: 40px; "> Plant A Seed! </h2>
+
+    </div>
+    <div class="col-sm-4">
+        <a href="logout"><button class="btn btn-info">Log out</button></a> 
+        <a href="/board"><button class="btn btn-info"> Back to Scrum Board </button></a>
+        <br>  
+        <br>
+        <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
+    </div>
+</div>
+<br> 
+        
+<h4 style="padding-left: 40px; color:#36b4da; "> Please fill out all the fields. </h4>
+    <h5 style="padding-left: 50px; color:#36b4da; "> >> Note: The end date of the task must be in the future and after the start date.  </h5>
+<br>
+
+@model Scrum
+<form asp-action="process" asp-controller="Home" method="post">
+<ul>
+    <div class="form-group">
+        Title:   <input  class="form-control" type="text" asp-for="title">
+        <span asp-validation-for="title"></span>
+    </div>
+
+    <div class="form-group">
+        Department: 
+        <select asp-for="dept" class="form-control">
+            <option value=""> Choose a department </option>
+            <option value="Product Management"> Product Management </option>
+            <option value="Engineering"> Engineering </option>
+            <option value="UX"> UX </option>
+            <option value="Marketing"> Marketing </option>
+            <option value="Sales"> Sales </option>
+            <option value="Implementation"> Implementation  </option>
+            <option value="Research & Development"> Research & Development </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        Start Date:  <input  class="form-control" type="date" asp-for="startdate">
+        <span asp-validation-for="startdate"></span>  
+    </div>
+
+    <div class="form-group">
+        End Date:  <input  class="form-control" type="date" asp-for="enddate">
+        <span asp-validation-for="enddate"></span>  
+    </div>
+
+    <div class="form-group">
+        Status: 
+        <select asp-for="status" class="form-control">
+            <option value=""> Current status is... </option>
+            <option value="Back Log"> Back Log </option>
+            <option value="To Do"> To Do </option>
+            <option value="In Progress"> In Progress </option>
+            <option value="Testing"> Testing </option>
+            <option value="Done"> Done </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        Description:   <textarea  class="form-control"  placeholder="The description here..." rows="3" asp-for="dx"> </textarea>  
+        <span asp-validation-for="dx"></span>
+    </div>
+<button class="btn waves-effect waves-light" style="color:rgb(231, 241, 238); background:#36b4da; " type="submit" name="submit"> Post </button>
+</ul>
+<br>
+<br>
+</form>
+
+</div> <!-- end of background image -->
+
+</body>
+</html>

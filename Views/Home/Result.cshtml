@@ -1,0 +1,20 @@
+ <br>
+ <h1>Hi your name is -- @ViewBag.username</h1>
+
+
+    <a href="logout"><button>Log out</button></a>
+    <a href="message"><button>Go To Your Message Dashboard</button></a>
+
+@model List<sqlUser>
+
+@{
+  foreach (var onerow in @Model){
+  <p>ID : @onerow.id</p>
+  <p>Name for : @onerow.name</p>
+  <p>Email : @onerow.email</p>
+  <p>Password : @onerow.pw</p>
+  <p>level : @onerow.level</p>
+  <hr>
+  }
+}
+

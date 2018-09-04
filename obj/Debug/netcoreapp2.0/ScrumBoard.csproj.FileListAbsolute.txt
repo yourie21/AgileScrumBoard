@@ -1,0 +1,11 @@
+C:\Users\youri\OneDrive\Documents\Dojo\c#\ScrumBoard\bin\Debug\netcoreapp2.0\ScrumBoard.deps.json
+C:\Users\youri\OneDrive\Documents\Dojo\c#\ScrumBoard\bin\Debug\netcoreapp2.0\ScrumBoard.runtimeconfig.json
+C:\Users\youri\OneDrive\Documents\Dojo\c#\ScrumBoard\bin\Debug\netcoreapp2.0\ScrumBoard.runtimeconfig.dev.json
+C:\Users\youri\OneDrive\Documents\Dojo\c#\ScrumBoard\bin\Debug\netcoreapp2.0\ScrumBoard.dll
+C:\Users\youri\OneDrive\Documents\Dojo\c#\ScrumBoard\bin\Debug\netcoreapp2.0\ScrumBoard.pdb
+C:\Users\youri\OneDrive\Documents\Dojo\c#\ScrumBoard\obj\Debug\netcoreapp2.0\ScrumBoard.csprojResolveAssemblyReference.cache
+C:\Users\youri\OneDrive\Documents\Dojo\c#\ScrumBoard\obj\Debug\netcoreapp2.0\ScrumBoard.csproj.CoreCompileInputs.cache
+C:\Users\youri\OneDrive\Documents\Dojo\c#\ScrumBoard\obj\Debug\netcoreapp2.0\ScrumBoard.AssemblyInfoInputs.cache
+C:\Users\youri\OneDrive\Documents\Dojo\c#\ScrumBoard\obj\Debug\netcoreapp2.0\ScrumBoard.AssemblyInfo.cs
+C:\Users\youri\OneDrive\Documents\Dojo\c#\ScrumBoard\obj\Debug\netcoreapp2.0\ScrumBoard.dll
+C:\Users\youri\OneDrive\Documents\Dojo\c#\ScrumBoard\obj\Debug\netcoreapp2.0\ScrumBoard.pdb

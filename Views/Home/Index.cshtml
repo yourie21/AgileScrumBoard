@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ScrumBoard</title>
+</head>
+
+<body>
+    <br>
+
+<div id="firstbackground">
+   <h2 style="color:rgb(0, 148, 171);  padding-left: 40px;">Welcome to Bloom Board!</h2>
+    @model Userlogin
+    <br>
+    <h4>Register</h4>
+    <form asp-action="register" asp-controller="Home" method="post">
+        <ul>
+            <div class="form-group">
+                <label asp-for="name"> First Name: </label>
+                <input class="form-control" type="text" asp-for="name">
+                <span asp-validation-for="name"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="lastname"> Last Name: </label>
+                <input class="form-control" type="text" asp-for="lastname">
+                <span asp-validation-for="lastname"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="email">Email: </label>
+                <input class="form-control" type="email" asp-for="email">
+                <span asp-validation-for="email"></span>
+                @ViewBag.email
+            </div>
+            
+            <!-- <div class="form-group">
+            <label asp-for="level">Operation Level</label>
+            <select asp-for="level" class="form-control">
+            <option value="0">General</option>
+            <option value="1">Admin</option>
+            </select>
+            </div> -->
+
+            <div class="form-group">
+                <strong>Operation Level: </strong>
+                <label class="form-check-label">
+                    <input type="radio" asp-for="level" name="level" value="0" checked> General </label>
+                <label class="form-check-label">
+                    <input type="radio" asp-for="level" name="level" value="1"> Admin </label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="pw">Password: </label>
+                <input class="form-control" type="password" asp-for="pw">
+                <span asp-validation-for="pw"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="cw">Confirm Password: </label>
+                <input class="form-control" type="password" asp-for="cw">
+                <span asp-validation-for="cw"></span>
+            </div>
+            <br>
+            <button class="btn btn-primary" style="background-color: #4f93c4;" type="submit" name="submit">Submit</button>
+        </ul>
+    </form>
+
+    <h4>Already a user? </h4>
+    <form asp-action="login" asp-controller="Home" method="post">
+        <ul>
+            @ViewBag.email2
+            <div class="form-group">
+                <label>Email: </label>
+                <input class="form-control" type="email" name="email">
+                <span asp-validation-for="email"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Password: </label>
+                <input class="form-control" type="password" name="pw">
+                <span asp-validation-for="pw"></span>
+            </div>
+            <br>
+            <button class="btn btn-primary" style="background-color: #4f93c4;" type="submit" name="submit">Submit</button>
+        </ul>
+    </form>
+
+</div>
+</body>
+
+</html>
