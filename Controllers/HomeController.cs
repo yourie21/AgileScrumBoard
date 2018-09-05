@@ -106,27 +106,39 @@ namespace ScrumBoard.Controllers
     }
 
     //// ********************************************************************************** ////
+    [HttpPost("/sorting")]
+    public IActionResult Sorting(string sort){
+      if (HttpContext.Session.GetInt32("userid") == null) return RedirectToAction("Index");
 
+      HttpContext.Session.SetString("sortQ", sort);
+      return RedirectToAction("Board");
+    }
+  
+  
     [HttpGet("/board")]
     public IActionResult Board(){
-        if (HttpContext.Session.GetInt32("userid") == null) return RedirectToAction("Index");
+      if (HttpContext.Session.GetInt32("userid") == null) return RedirectToAction("Index");
 
-// // newest task at top (original sort)
-//         List<Scrum> allscrums = _context.scrumtable.Include(x=>x.user).Include(x=>x.parts).ThenInclude(j=>j.user).OrderByDescending(x=>x.id).ToList();
-//         return View(allscrums); 
+  // Creator's name sort
+      if (HttpContext.Session.GetString("sortQ") == "UserId") {
+        List<Scrum> allscrums = _context.scrumtable.Include(x=>x.user).Include(x=>x.parts).ThenInclude(j=>j.user).OrderBy(x=>x.user.name).ToList();
+        return View(allscrums); 
 
-// // Creator's name sort
-//         List<Scrum> allscrums = _context.scrumtable.Include(x=>x.user).Include(x=>x.parts).ThenInclude(j=>j.user).OrderBy(x=>x.user.name).ToList();
-//         return View(allscrums); 
-
-// // status sort
-//         List<Scrum> allscrums = _context.scrumtable.Include(x=>x.user).Include(x=>x.parts).ThenInclude(j=>j.user).OrderBy(x=>x.status).ToList();
-//         return View(allscrums); 
-
-// end date sort
+  // end date sort 
+      } else if (HttpContext.Session.GetString("sortQ") == "enddate") {
         List<Scrum> allscrums = _context.scrumtable.Include(x=>x.user).Include(x=>x.parts).ThenInclude(j=>j.user).OrderBy(x=>x.enddate).ToList();
         return View(allscrums); 
-        
+
+  // status sort 
+      } else if (HttpContext.Session.GetString("sortQ") == "status") {
+        List<Scrum> allscrums = _context.scrumtable.Include(x=>x.user).Include(x=>x.parts).ThenInclude(j=>j.user).OrderBy(x=>x.status).ToList();
+        return View(allscrums); 
+
+  //default sort : newest task at top
+      } else {
+        List<Scrum> allscrums = _context.scrumtable.Include(x=>x.user).Include(x=>x.parts).ThenInclude(j=>j.user).OrderByDescending(x=>x.id).ToList();
+        return View(allscrums); 
+      }
     }
 
 

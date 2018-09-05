@@ -26,14 +26,15 @@
         <a href="/add"><button class="btn btn-info"> Add a Task </button></a>
         <br>  
         <br>
-        <form class="form-inline my-2 my-lg-0">
-                Sorty By: 
+        <form method="POST" action="Sorting" class="form-inline my-2 my-lg-0">
+                Sort options: 
             <select name="sort" class="form-control">
-                <option value=""> Sort options... </option>
+                <option value=""> Choose By... </option>
                 <option value="UserId"> Creator </option>
                 <option value="enddate"> End Date </option>
                 <option value="status"> Status </option>
             </select>
+            <button class="btn btn-info" style="background-color: #89ebd6; " >Change!</button>
         </form>
     </div>
 </div>
